@@ -1,8 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_archi/core/app_export.dart';
 import 'package:flutter_custom_archi/routes/app_routes.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(
     const ProviderScope(
       child: MyApp(),
@@ -21,20 +23,12 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       routerConfig: AppRoutes.router,
+      debugShowCheckedModeBanner: false,
+      localizationsDelegates: const [
+        DefaultMaterialLocalizations.delegate,
+        DefaultCupertinoLocalizations.delegate
+      ],
+      locale: const Locale('fr', 'FR'),
     );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold();
   }
 }
